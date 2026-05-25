@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynojet 250i | Grip Mode</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --red:#e31b23;
+    --black:#000;
+    --dark:#0d0d0d;
+    --white:#fff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:var(--black);
+    color:var(--white);
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:rgba(0,0,0,0.85);
+    position:fixed;
+    width:100%;
+    z-index:1000;
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    font-weight:700;
+    font-size:20px;
+    color:var(--white);
+    text-decoration:none;
+}
+
+nav a{
+    margin:0 15px;
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:var(--red);
+}
+
+/* HERO */
+.hero{
+    height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.95)),
+    url('https://images.unsplash.com/photo-1558981806-ec527fa84c39');
+    background-size:cover;
+}
+
+.hero h1{
+    font-size:50px;
+}
+
+.highlight{
+    color:var(--red);
+    text-shadow:0 0 15px rgba(227,27,35,0.8);
+}
+
+/* SECTION */
+.section{
+    padding:120px 60px;
+}
+
+.section h2{
+    color:var(--red);
+    margin-bottom:40px;
+}
+
+/* BRAND BLOCK */
+.brand-block{
+    margin-bottom:50px;
+    padding:20px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:10px;
+}
+
+/* BRAND TITLE */
+.brand-title{
+    font-size:22px;
+    font-weight:700;
+    color:var(--red);
+    margin-bottom:20px;
+}
+
+/* MODEL LIST */
+.model-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    padding:8px 0;
+    border-bottom:1px solid #111;
+}
+
+.model-name{
+    width:220px;
+    color:#ccc;
+}
+
+.year{
+    font-size:13px;
+    color:#777;
+    transition:0.2s;
+}
+
+.year:hover{
+    color:var(--red);
+    text-shadow:0 0 8px rgba(227,27,35,0.7);
+}
+html{
+    scroll-behavior: smooth;
+}
+.section{
+    padding:120px 80px;
+    max-width:1400px;
+    margin:auto;
+}
+.model-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 12px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:6px;
+    transition:0.2s;
+}
+
+.model-row:hover{
+    border-color:var(--red);
+    box-shadow:0 0 10px rgba(227,27,35,0.3);
+}
+
+.model-name{
+    font-size:14px;
+    color:#ddd;
+}
+
+.year{
+    font-size:12px;
+    color:#888;
+}
+.brand-title{
+    grid-column:1 / -1;
+    font-size:24px;
+    font-weight:700;
+    color:var(--red);
+    margin-bottom:10px;
+}
+.brand-block{
+    margin-bottom:60px;
+    padding:25px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:12px;
+}
+
+/* GRID MODEL */
+.brand-block{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap:12px 20px;
+}
+/* FILTER */
+/* ===== PRO FILTER ===== */
+.filter-pro{
+    display:flex;
+    gap:15px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.filter-pro input,
+.filter-pro select{
+    padding:12px 16px;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:8px;
+    color:#fff;
+    font-size:14px;
+    outline:none;
+    transition:0.25s;
+}
+
+.filter-pro input{
+    min-width:280px;
+}
+
+.filter-pro select{
+    cursor:pointer;
+}
+
+.filter-pro input:focus,
+.filter-pro select:focus{
+    border-color:var(--red);
+    box-shadow:0 0 10px rgba(227,27,35,0.4);
+}
+
+.hidden{
+    display:none !important;
+}
+
+/* highlight chữ match */
+mark{
+    background:rgba(227,27,35,0.3);
+    color:#fff;
+    padding:2px 4px;
+    border-radius:3px;
+}
+/* ===== GRIP MODE BRAND FILTER ===== */
+.brand-filter{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+    margin-bottom:40px;
+}
+
+/* base */
+.brand-btn{
+    position:relative;
+    padding:8px 18px;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#888;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:30px;
+    cursor:pointer;
+    overflow:hidden;
+    transition:0.25s;
+}
+
+/* line effect */
+.brand-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(227,27,35,0.6), transparent);
+    transition:0.4s;
+}
+
+/* hover */
+.brand-btn:hover{
+    color:#fff;
+    border-color:var(--red);
+    box-shadow:0 0 12px rgba(227,27,35,0.4);
+}
+
+.brand-btn:hover::before{
+    left:100%;
+}
+
+/* active = selected */
+.brand-btn.active{
+    color:#fff;
+    background:linear-gradient(145deg, #e31b23, #a31218);
+    border-color:#e31b23;
+    box-shadow:
+        0 0 12px rgba(227,27,35,0.6),
+        inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+/* active glow pulse nhẹ */
+.brand-btn.active::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:30px;
+    box-shadow:0 0 15px rgba(227,27,35,0.5);
+    opacity:0.6;
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%{opacity:0.6;}
+    50%{opacity:0.2;}
+    100%{opacity:0.6;}
+}
+/* ===== DYNO LOADER ===== */
+#dynoLoader{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+/* BOX */
+.dyno-box{
+    width:400px;
+    text-align:center;
+}
+
+/* TITLE */
+.dyno-title{
+    color:var(--red);
+    font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+/* RPM BAR */
+.rpm-bar{
+    width:100%;
+    height:10px;
+    background:#111;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:15px;
+}
+
+.rpm-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ff0000,#e31b23,#ff4d4d);
+    box-shadow:0 0 15px rgba(227,27,35,0.8);
+}
+
+/* STATS */
+.dyno-stats{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:#aaa;
+}
+
+/* SCAN LINE */
+.scan-line{
+    margin-top:20px;
+    height:2px;
+    width:100%;
+    background:linear-gradient(90deg,transparent,red,transparent);
+    animation:scan 1.2s linear infinite;
+}
+
+@keyframes scan{
+    0%{transform:translateX(-100%);}
+    100%{transform:translateX(100%);}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="index.html#home" class="logo">GRIP MODE PERFORMANCE</a>
+
+<nav>
+<a href="index.html#home">Home</a>
+<a href="index.html#services">Services</a>
+<a href="index.html#performance">Performance</a>
+<a href="dynojet.html">Dynojet</a>
+<a href="index.html#gallery">Gallery</a>
+<a href="index.html#pricing">Pricing</a>
+<a href="index.html#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<h1>
+<span class="highlight">DYNOJET</span><br>
+<span class="highlight">250i DATA</span>
+</h1>
+<p>Dữ liệu mapping theo từng dòng xe</p>
+</div>
+</section>
+
+<section class="section">
+<h2>SUPPORTED MODELS</h2>
+<div class="filter-pro">
+    <input type="text" id="searchInput" placeholder="🔍 Tìm xe... (R1, Exciter, Xmax...)">
+
+    <select id="brandFilter">
+        <option value="all">All Brands</option>
+        <option value="BMW">BMW</option>
+        <option value="DUCATI">DUCATI</option>
+        <option value="HONDA">HONDA</option>
+        <option value="YAMAHA">YAMAHA</option>
+        <option value="KAWASAKI">KAWASAKI</option>
+        <option value="KTM">KTM</option>
+        <option value="SUZUKI">SUZUKI</option>
+        <option value="TRIUMPH">TRIUMPH</option>
+    </select>
+</div>
+
+<!-- ================= BMW ================= -->
+<div class="brand-block">
+<div class="brand-title">BMW</div>
+
+<div class="model-row"><div class="model-name">S1000RR</div><div class="year">2009 - 2026</div></div>
+<div class="model-row"><div class="model-name">M1000RR</div><div class="year">2021 - 2026</div></div>
+<div class="model-row"><div class="model-name">S1000R</div><div class="year">2014 - 2026</div></div>
+<div class="model-row"><div class="model-name">M1000R</div><div class="year">2023 - 2026</div></div>
+<div class="model-row"><div class="model-name">S1000XR</div><div class="year">2014 - 2026</div></div>
+<div class="model-row"><div class="model-name">M1000XR</div><div class="year">2024 - 2026</div></div>
+<div class="model-row"><div class="model-name">R1250GS</div><div class="year">2019 - 2024</div></div>
+<div class="model-row"><div class="model-name">R1300GS</div><div class="year">2024 - 2026</div></div>
+<div class="model-row"><div class="model-name">F900R</div><div class="year">2020 - 2026</div></div>
+<div class="model-row"><div class="model-name">F900XR</div><div class="year">2020 - 2026</div></div>
+
+</div>
+
+<!-- ================= DUCATI ================= -->
+<div class="brand-block">
+<div class="brand-title">DUCATI</div>
+
+<div class="model-row"><div class="model-name">1199 / 1299 Panigale</div><div class="year">2011 - 2018</div></div>
+<div class="model-row"><div class="model-name">899 / 959 Panigale</div><div class="year">2013 - 2019</div></div>
+<div class="model-row"><div class="model-name">V4 / V4S / V4R</div><div class="year">2018 - 2023</div></div>
+<div class="model-row"><div class="model-name">Streetfighter V4</div><div class="year">2020 - 2021</div></div>
+<div class="model-row"><div class="model-name">Multistrada V4</div><div class="year">2020 - 2024</div></div>
+<div class="model-row"><div class="model-name">Diavel V4</div><div class="year">2023</div></div>
+
+</div>
+
+<!-- ================= HONDA ================= -->
+<div class="brand-block">
+<div class="brand-title">HONDA</div>
+
+<div class="model-row"><div class="model-name">CBR1000RR</div><div class="year">2006 - 2026</div></div>
+<div class="model-row"><div class="model-name">CBR1000RR-R</div><div class="year">2020 - 2025</div></div>
+<div class="model-row"><div class="model-name">CBR600RR</div><div class="year">2007 - 2025</div></div>
+<div class="model-row"><div class="model-name">CBR650R / CB650R</div><div class="year">2018 - 2026</div></div>
+<div class="model-row"><div class="model-name">CBR500R</div><div class="year">2013 - 2025</div></div>
+<div class="model-row"><div class="model-name">CBR250RR</div><div class="year">2017 - 2026</div></div>
+<div class="model-row"><div class="model-name">CB1000R</div><div class="year">2008 - 2024</div></div>
+<div class="model-row"><div class="model-name">Africa Twin 1100</div><div class="year">2020 - 2025</div></div>
+<div class="model-row"><div class="model-name">X-ADV 750</div><div class="year">2017 - 2025</div></div>
+<div class="model-row"><div class="model-name">CB750</div><div class="year">2023 - 2025</div></div>
+<div class="model-row"><div class="model-name">Winner X 150</div><div class="year">2018- 2025</div></div>
+<div class="model-row"><div class="model-name">AirBlade 125</div><div class="year">2007-2026</div></div>
+
+<!-- AIRBLADE -->
+<div class="model-row"><div class="model-name">AIRBLADE ECU SERIES</div><div class="year">2013 - 2020</div></div>
+<div class="model-row"><div class="model-name">AB-30400-K27A-V01 / K27G-V51</div><div class="year">2013 - 2015</div></div>
+<div class="model-row"><div class="model-name">AB-30400-K66 SERIES</div><div class="year">2016 - 2019</div></div>
+<div class="model-row"><div class="model-name">AB-30400-K1FA / K1GA</div><div class="year">2020</div></div>
+
+<!-- LEAD -->
+<div class="model-row"><div class="model-name">LEAD ECU SERIES</div><div class="year">2013 - 2021</div></div>
+<div class="model-row"><div class="model-name">LEAD K12A / K29F</div><div class="year">2013 - 2015</div></div>
+<div class="model-row"><div class="model-name">LEAD K12H / K12K / K12M</div><div class="year">2016 - 2019</div></div>
+<div class="model-row"><div class="model-name">LEAD K2TA SERIES</div><div class="year">2021</div></div>
+
+<!-- PCX -->
+<div class="model-row"><div class="model-name">PCX 150 ECU</div><div class="year">2016 - 2019</div></div>
+<div class="model-row"><div class="model-name">PCX K35 / K36 / K96 / K97</div><div class="year">2016 - 2019</div></div>
+<div class="model-row"><div class="model-name">PCX 160 K1ZA / K1ZG</div><div class="year">2021</div></div>
+<div class="model-row"><div class="model-name">PCX 2023 K1ZP</div><div class="year">2023</div></div>
+
+<!-- SH MODE -->
+<div class="model-row"><div class="model-name">SH MODE ECU</div><div class="year">2017 - 2021</div></div>
+<div class="model-row"><div class="model-name">K29K / K29M / K1NA</div><div class="year">2017 - 2021</div></div>
+
+<!-- VISION -->
+<div class="model-row"><div class="model-name">VISION ECU SERIES</div><div class="year">2016 - 2023</div></div>
+<div class="model-row"><div class="model-name">K44 / K2CA SERIES</div><div class="year">2016 - 2021</div></div>
+<div class="model-row"><div class="model-name">VISION 2023 K2CF</div><div class="year">2023</div></div>
+
+<!-- SHVN -->
+<div class="model-row"><div class="model-name">SHVN 125/150 ECU</div><div class="year">2016 - 2021</div></div>
+<div class="model-row"><div class="model-name">K77 / K78 / K0SA / K0RA</div><div class="year">2017 - 2021</div></div>
+
+<!-- VARIO / CLICK -->
+<div class="model-row"><div class="model-name">VARIO / CLICK ECU</div><div class="year">2016 - 2023</div></div>
+<div class="model-row"><div class="model-name">K59 / K60 SERIES</div><div class="year">2016 - 2020</div></div>
+<div class="model-row"><div class="model-name">VARIO 125 / 160 K2VG / K2SG</div><div class="year">2022 - 2023</div></div>
+<div class="model-row"><div class="model-name">CLICK 160 K2SF</div><div class="year">2023</div></div>
+
+<!-- ADV -->
+<div class="model-row"><div class="model-name">ADV 150 / 160 ECU</div><div class="year">2019 - 2023</div></div>
+
+<!-- BEAT -->
+<div class="model-row"><div class="model-name">BEAT ECU SERIES</div><div class="year">2017 - 2019</div></div>
+
+<!-- ZOOMER -->
+<div class="model-row"><div class="model-name">ZOOMER-X</div><div class="year">2017 - 2019</div></div>
+
+<!-- OTHER -->
+<div class="model-row"><div class="model-name">GENERIC ECU SERIES (30400-XXXX)</div><div class="year">2020 - 2021</div></div>
+
+<!-- ================= KEIHIN ECU ================= -->
+
+<div class="model-row"><div class="model-name">CBR150 ECU SERIES</div><div class="year">38770-K15 / K45 / KPP</div></div>
+<div class="model-row"><div class="model-name">WAVE / DREAM ECU</div><div class="year">K03 / K58 / K73 / KZV</div></div>
+<div class="model-row"><div class="model-name">CUB 50 ECU</div><div class="year">GBJ-M44</div></div>
+<div class="model-row"><div class="model-name">MONKEY 125 ECU</div><div class="year">K0F-T01</div></div>
+<div class="model-row"><div class="model-name">SCOOPY 2021 ECU</div><div class="year">K2F SERIES</div></div>
+<div class="model-row"><div class="model-name">SH 300 ECU</div><div class="year">K53 / KSV / KTW</div></div>
+
+</div>
+
+<!-- ================= YAMAHA ================= -->
+<div class="brand-block">
+<div class="brand-title">YAMAHA</div>
+
+<div class="model-row"><div class="model-name">YZF-R1</div><div class="year">2004 - 2026</div></div>
+<div class="model-row"><div class="model-name">YZF-R6</div><div class="year">2003 - 2026</div></div>
+<div class="model-row"><div class="model-name">R7</div><div class="year">2021 - 2027</div></div>
+<div class="model-row"><div class="model-name">R3</div><div class="year">2015 - 2026</div></div>
+<div class="model-row"><div class="model-name">MT-09</div><div class="year">2014 - 2026</div></div>
+<div class="model-row"><div class="model-name">MT-07</div><div class="year">2014 - 2026</div></div>
+<div class="model-row"><div class="model-name">MT-10</div><div class="year">2016 - 2026</div></div>
+<div class="model-row"><div class="model-name">XSR900</div><div class="year">2016 - 2026</div></div>
+
+    <div class="model-row"><div class="model-name">Exciter 150</div><div class="year">2015 - 2018 (Available)</div></div>
+    <div class="model-row"><div class="model-name">Exciter 150</div><div class="year">2019 - 2020 (Available)</div></div>
+    <div class="model-row"><div class="model-name">Exciter 155</div><div class="year">2021 (Available)</div></div>
+
+    <div class="model-row"><div class="model-name">MT-15 B8D0</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">TFX</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Acruzo 2TD1</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Freego B4U1</div><div class="year">(Available)</div></div>
+
+    <div class="model-row"><div class="model-name">Sirius 1FC</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Jupiter 1FP</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Sirius 115 BCA</div><div class="year">(Available)</div></div>
+
+    <div class="model-row"><div class="model-name">FZ150i</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">YZF-R125 B5G0</div><div class="year">(Available)</div></div>
+
+    <div class="model-row"><div class="model-name">X-Max 400 BL10</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">X-Max 300 B740</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">X-Max 300 B741</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">X-Max 300 BV30</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">X-Max 250 BG62</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">X-Max BV34 / BV35</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">X-Max BV42 / BV43</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">X-Max B5X1</div><div class="year">2020 - 2021 (Available)</div></div>
+
+    <div class="model-row"><div class="model-name">ECU 1SM / 1SMA</div><div class="year">2015 (Available)</div></div>
+
+    <div class="model-row"><div class="model-name">WR250F</div><div class="year">2018 (2GB1 / 2GB2 / 2GBF) (Available)</div></div>
+    <div class="model-row"><div class="model-name">WR250F</div><div class="year">2018 (2GBH) (Available)</div></div>
+    <div class="model-row"><div class="model-name">WR250F 2GCC</div><div class="year">(Available)</div></div>
+
+    <div class="model-row"><div class="model-name">YZ450FX</div><div class="year">2019 (B3J0 / B3J1) (Available)</div></div>
+    <div class="model-row"><div class="model-name">YZ450FX</div><div class="year">2019 (B3J2 / B3J3) (Available)</div></div>
+    <div class="model-row"><div class="model-name">YZ450FX</div><div class="year">2019 (B3J4) (Available)</div></div>
+
+    <div class="model-row"><div class="model-name">YZ250FX</div><div class="year">2020 (BAJ0 / BAJ1 / BAJ3 / BAJ4) (Available)</div></div>
+
+    <div class="model-row"><div class="model-name">MT-15 BHM0 (Malaysia)</div><div class="year">(Available)</div></div>
+
+    <div class="model-row"><div class="model-name">Grande B8A0 / B8A1 / B8A1-40</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Grande Thai B8B0</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Grande Thailand B8B0-31</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Grande Thai B8B1-40</div><div class="year">(Available)</div></div>
+
+    <div class="model-row"><div class="model-name">Fazzio BJK1 (Thailand)</div><div class="year">2023</div></div>
+    <div class="model-row"><div class="model-name">Y16 BAX0</div><div class="year">(Available)</div></div>
+
+    <!-- Additional -->
+    <div class="model-row"><div class="model-name">Satria / Raider Fi</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Aerox BF6-H594A-01</div><div class="year">(Available)</div></div>
+    <div class="model-row"><div class="model-name">Nmax B6H-H594A-01</div><div class="year">(Available)</div></div>
+
+    <div class="model-row"><div class="model-name">NVX 155</div><div class="year">Updating...</div></div>
+</div>
+</div>
+
+<!-- ================= KAWASAKI ================= -->
+<div class="brand-block">
+<div class="brand-title">KAWASAKI</div>
+
+<div class="model-row"><div class="model-name">ZX10R</div><div class="year">2004 - 2027</div></div>
+<div class="model-row"><div class="model-name">ZX6R</div><div class="year">2003 - 2022</div></div>
+<div class="model-row"><div class="model-name">ZX4R</div><div class="year">2023 - 2026</div></div>
+<div class="model-row"><div class="model-name">H2</div><div class="year">2015 - 2026</div></div>
+<div class="model-row"><div class="model-name">Z1000</div><div class="year">2003 - 2025</div></div>
+<div class="model-row"><div class="model-name">Z900</div><div class="year">2017 - 2026</div></div>
+<div class="model-row"><div class="model-name">Z650</div><div class="year">2017 - 2026</div></div>
+<div class="model-row"><div class="model-name">Ninja 400</div><div class="year">2016 - 2024</div></div>
+<div class="model-row"><div class="model-name">Ninja 650</div><div class="year">2006 - 2026</div></div>
+
+</div>
+
+<!-- ================= KTM ================= -->
+<div class="brand-block">
+<div class="brand-title">KTM</div>
+
+<div class="model-row"><div class="model-name">1290 Super Duke</div><div class="year">2014 - 2023</div></div>
+<div class="model-row"><div class="model-name">1390 Super Duke</div><div class="year">2024 - 2025</div></div>
+<div class="model-row"><div class="model-name">890 Duke</div><div class="year">2020 - 2024</div></div>
+<div class="model-row"><div class="model-name">790 Duke</div><div class="year">2017 - 2020</div></div>
+<div class="model-row"><div class="model-name">690 SMC-R</div><div class="year">2012 - 2026</div></div>
+
+</div>
+
+<!-- ================= SUZUKI ================= -->
+<div class="brand-block">
+<div class="brand-title">SUZUKI</div>
+
+<div class="model-row"><div class="model-name">GSX-R1000</div><div class="year">2003 - 2026</div></div>
+<div class="model-row"><div class="model-name">GSX-R750</div><div class="year">2004 - 2026</div></div>
+<div class="model-row"><div class="model-name">GSX-R600</div><div class="year">2004 - 2026</div></div>
+<div class="model-row"><div class="model-name">Hayabusa</div><div class="year">2002 - 2026</div></div>
+<div class="model-row"><div class="model-name">GSX-S1000</div><div class="year">2015 - 2026</div></div>
+
+</div>
+
+<!-- ================= TRIUMPH ================= -->
+<div class="brand-block">
+<div class="brand-title">TRIUMPH</div>
+
+<div class="model-row"><div class="model-name">Daytona 675</div><div class="year">2006 - 2018</div></div>
+<div class="model-row"><div class="model-name">Street Triple 765</div><div class="year">2017 - 2026</div></div>
+<div class="model-row"><div class="model-name">Speed Triple 1200</div><div class="year">2021 - 2026</div></div>
+<div class="model-row"><div class="model-name">Rocket 3</div><div class="year">2013 - 2025</div></div>
+<div class="model-row"><div class="model-name">Tiger 900</div><div class="year">2021 - 2025</div></div>
+
+</div>
+
+</section>
+<div id="dynoLoader">
+    <div class="dyno-box">
+
+        <div class="dyno-title">DYNO RUN</div>
+
+        <div class="rpm-bar">
+            <div class="rpm-fill"></div>
+        </div>
+
+        <div class="dyno-stats">
+            <span id="rpm">RPM: 0</span>
+            <span id="speed">SPEED: 0 km/h</span>
+        </div>
+
+        <div class="scan-line"></div>
+
+    </div>
+</div>
+<script>
+const searchInput = document.getElementById("searchInput");
+const brandFilter = document.getElementById("brandFilter");
+
+function highlight(text, keyword){
+    if(!keyword) return text;
+    const regex = new RegExp(`(${keyword})`, "gi");
+    return text.replace(regex, "<mark>$1</mark>");
+}
+
+function filterData(){
+    const keyword = searchInput.value.toLowerCase();
+    const selectedBrand = brandFilter.value;
+
+    const brands = document.querySelectorAll(".brand-block");
+
+    brands.forEach(brand => {
+        const brandName = brand.querySelector(".brand-title").innerText;
+        const rows = brand.querySelectorAll(".model-row");
+
+        let hasVisible = false;
+
+        rows.forEach(row => {
+            const nameEl = row.querySelector(".model-name");
+            const yearEl = row.querySelector(".year");
+
+            const originalName = nameEl.textContent;
+            const originalYear = yearEl.textContent;
+
+            const text = (originalName + " " + originalYear).toLowerCase();
+
+            const matchKeyword = text.includes(keyword);
+            const matchBrand = (selectedBrand === "all" || brandName === selectedBrand);
+
+            if(matchKeyword && matchBrand){
+                row.classList.remove("hidden");
+                hasVisible = true;
+
+                // highlight
+                nameEl.innerHTML = highlight(originalName, keyword);
+                yearEl.innerHTML = highlight(originalYear, keyword);
+            } else {
+                row.classList.add("hidden");
+                nameEl.innerHTML = originalName;
+                yearEl.innerHTML = originalYear;
+            }
+        });
+
+        if(hasVisible && (selectedBrand === "all" || brandName === selectedBrand)){
+            brand.classList.remove("hidden");
+        } else {
+            brand.classList.add("hidden");
+        }
+    });
+}
+
+searchInput.addEventListener("keyup", filterData);
+brandFilter.addEventListener("change", filterData);
+</script>
+<script>
+const loader = document.getElementById("dynoLoader");
+const rpmEl = document.getElementById("rpm");
+const speedEl = document.getElementById("speed");
+const fill = document.querySelector(".rpm-fill");
+
+// ===== AUDIO SETUP =====
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioCtx = new AudioContext();
+
+// ===== V4 ENGINE SOUND =====
+let oscLow = audioCtx.createOscillator();
+let oscMid = audioCtx.createOscillator();
+let oscHigh = audioCtx.createOscillator();
+
+let gainLow = audioCtx.createGain();
+let gainMid = audioCtx.createGain();
+let gainHigh = audioCtx.createGain();
+
+oscLow.connect(gainLow).connect(audioCtx.destination);
+oscMid.connect(gainMid).connect(audioCtx.destination);
+oscHigh.connect(gainHigh).connect(audioCtx.destination);
+
+oscLow.type = "sawtooth";
+oscMid.type = "square";
+oscHigh.type = "triangle";
+
+oscLow.start();
+oscMid.start();
+oscHigh.start();
+
+// ===== DYNO =====
+let rpm = 0;
+let speed = 0;
+let lastRPM = 0;
+
+const maxRPM = 14000;
+
+const interval = setInterval(()=>{
+
+    let progress = rpm / maxRPM;
+
+    // ===== TĂNG RPM =====
+    rpm += Math.floor((1 - progress) * 1200 + 200);
+    speed += Math.floor((1 - progress) * 15 + 3);
+
+    // ===== GIẢ LẬP NHẢ GA (QUAN TRỌNG) =====
+// nhả ga nhẹ (mượt hơn)
+if(rpm > 6000 && Math.random() > 0.96){
+    rpm -= 200 + Math.random()*300;
+    // làm mượt rpm (anti giật)
+rpm = rpm * 0.9 + lastRPM * 0.1;
+}
+
+    if(rpm > maxRPM) rpm = maxRPM;
+    if(speed > 180) speed = 180;
+    if(rpm < 0) rpm = 0;
+
+    // ===== UI =====
+    rpmEl.innerText = "RPM: " + rpm;
+    speedEl.innerText = "SPEED: " + speed + " km/h";
+    fill.style.width = (rpm / maxRPM * 100) + "%";
+
+    // ===== ENGINE SOUND =====
+    let base = rpm / maxRPM;
+
+    oscLow.frequency.value = 40 + base * 200;
+    gainLow.gain.value = 0.4;
+
+    oscMid.frequency.value = 80 + base * 400;
+    gainMid.gain.value = 0.25;
+
+    oscHigh.frequency.value = 200 + base * 1200;
+    gainHigh.gain.value = 0.05 + base * 0.1;
+
+    // V4 pulse
+    let pulse = Math.sin(audioCtx.currentTime * (20 + base * 40));
+    gainLow.gain.value *= (0.7 + pulse * 0.3);
+
+    // ===== DECEL POP (THẢ GA) =====
+    if(rpm < lastRPM && rpm > 3000){
+
+        if(Math.random() > 0.6){
+
+            gainHigh.gain.value = 0.7;
+            gainMid.gain.value = 0.3;
+
+            oscHigh.frequency.setValueAtTime(
+                1500 + Math.random()*1200,
+                audioCtx.currentTime
+            );
+
+            gainHigh.gain.exponentialRampToValueAtTime(
+                0.01,
+                audioCtx.currentTime + 0.08
+            );
+        }
+    }
+
+    // ===== LIMITER =====
+    if(rpm >= maxRPM){
+
+        let pops = 0;
+
+        let limiter = setInterval(()=>{
+
+            rpm -= 300 + Math.random()*400;
+
+            gainHigh.gain.value = 0.9;
+            gainMid.gain.value = 0.5;
+
+            oscHigh.frequency.setValueAtTime(
+                2000 + Math.random()*1500,
+                audioCtx.currentTime
+            );
+
+            pops++;
+
+            if(pops > 10){
+                clearInterval(limiter);
+
+                gainLow.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+                gainMid.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+                gainHigh.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+
+                setTimeout(()=>{
+                    loader.style.opacity = "0";
+                    loader.style.transition = "0.6s";
+
+                    setTimeout(()=>{
+                        loader.style.display = "none";
+                    },600);
+                },800);
+            }
+
+        },100);
+
+        clearInterval(interval);
+    }
+
+    // ===== UPDATE LAST RPM =====
+    lastRPM = rpm;
+
+},40);
+</script>
+<button id="startDyno" style="display:none;"></button>
+</body>
+</html>
